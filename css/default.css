@@ -11677,8 +11677,3 @@ figure.highlight.foldable div.level-left {
     padding: 1.5rem 1rem;
   }
 }
-@media (max-width: 768px) {
-  .navbar-logo {
-    display: none !important; /* 强制隐藏元素，不占用任何页面空间 */
-  }
-}

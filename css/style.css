@@ -11677,9 +11677,3 @@ figure.highlight.foldable div.level-left {
     padding: 1.5rem 1rem;
   }
 }
-/* 移动端（≤768px）隐藏logo图标 - Stylus纯缩进写法（无大括号，推荐） */
-@media (max-width: 768px) {
-  .navbar-logo {
-    display: none !important; /* 强制隐藏元素，不占用任何页面空间 */
-  }
-}
