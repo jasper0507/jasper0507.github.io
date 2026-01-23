@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>git新手入门参考 - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#ffffff"><meta name="application-name" content="jasper0507&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="jasper0507&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="这是一篇用于新手快速上手git基本操作的文章。"><meta property="og:type" content="blog"><meta property="og:title" content="git新手入门参考"><meta property="og:url" content="http://example.com/2026/01/23/git%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="这是一篇用于新手快速上手git基本操作的文章。"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2026-01-23T09:57:17.000Z"><meta property="article:modified_time" content="2026-01-23T09:57:17.000Z"><meta property="article:author" content="jasper0507"><meta property="article:tag" content="Git"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/01/23/git%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83/"},"headline":"git新手入门参考","image":["http://example.com/img/og_image.png"],"datePublished":"2026-01-23T09:57:17.000Z","dateModified":"2026-01-23T09:57:17.000Z","author":{"@type":"Person","name":"jasper0507"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"这是一篇用于新手快速上手git基本操作的文章。"}</script><link rel="canonical" href="http://example.com/2026/01/23/git%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a7616da8eba57c8dc5dce4d0e23759c6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" target="_blank" rel="noopener" href="https://github.com/jasper0507/jasper0507.github.io/new/main?filename=README.md">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/jasper0507"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2026-01-23T09:57:17.000Z" title="2026/1/23 17:57:17">2026-01-23</time></span><span class="level-item"><a class="link-muted" href="/categories/Git/">Git</a></span><span class="level-item">23 minutes read (About 3379 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">git新手入门参考</h1><div class="content"><h1 id="Git-零基础学习笔记"><a href="#Git-零基础学习笔记" class="headerlink" title="Git 零基础学习笔记"></a>Git 零基础学习笔记</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-git-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">Git 安装配置详细教程</a></li>
+<li><a href="#2-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86git%E5%B8%B8%E7%94%A8linux%E5%91%BD%E4%BB%A4">前置知识：Git常用Linux命令</a></li>
+<li><a href="#3-git-%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA">Git 核心理论</a></li>
+<li><a href="#4-git-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4">Git 基础操作命令</a></li>
+<li><a href="#5-git-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C">Git 分支操作</a></li>
+<li><a href="#6-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ol>
+<h2 id="1-Git-安装与配置"><a href="#1-Git-安装与配置" class="headerlink" title="1. Git 安装与配置"></a>1. Git 安装与配置</h2><h3 id="安装配置参考文档"><a href="#安装配置参考文档" class="headerlink" title="安装配置参考文档"></a>安装配置参考文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_62223405/article/details/154869827?ops_request_misc=elastic_search_misc&request_id=65cb24b096bb603b07cb714b5f6366dd&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-154869827-null-null.142%5Ev102%5Epc_search_result_base3&utm_term=git%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187">Git 安装配置详细教程</a></li>
+</ul>
+<h2 id="2-前置知识：Git常用Linux命令"><a href="#2-前置知识：Git常用Linux命令" class="headerlink" title="2. 前置知识：Git常用Linux命令"></a>2. 前置知识：Git常用Linux命令</h2><p>Git操作依赖Linux终端命令，以下是高频使用的命令分类整理：</p>
+<h3 id="2-1-目录操作命令"><a href="#2-1-目录操作命令" class="headerlink" title="2.1 目录操作命令"></a>2.1 目录操作命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd</code></td>
+<td>显示当前工作目录的绝对路径</td>
+<td><code>pwd</code></td>
+<td><code>pwd</code> → 输出：<code>/home/user/git-learn</code></td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>切换工作目录</td>
+<td><code>cd [目录路径]</code></td>
+<td>1. <code>cd ~</code> → 回到当前用户主目录<br>2. <code>cd ..</code> → 回到上级目录<br>3. <code>cd /home/user</code> → 切换到指定绝对路径</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出目录下的文件和子目录</td>
+<td><code>ls [选项] [目录]</code></td>
+<td>1. <code>ls</code> → 简单列出文件<br>2. <code>ls -l</code> → 详细列表（权限、大小、时间等）<br>3. <code>ls -a</code> → 显示隐藏文件（以<code>.</code>开头的文件，如.git）</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>创建新目录</td>
+<td><code>mkdir [选项] 目录名</code></td>
+<td>1. <code>mkdir my-blog</code> → 创建单级目录<br>2. <code>mkdir -p dir1/dir2/dir3</code> → 递归创建多级目录</td>
+</tr>
+<tr>
+<td><code>rmdir</code></td>
+<td>删除空目录</td>
+<td><code>rmdir [选项] 目录名</code></td>
+<td><code>rmdir empty-dir</code> → 删除空目录（非空目录需用<code>rm -r</code>）</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-文件操作命令"><a href="#2-2-文件操作命令" class="headerlink" title="2.2 文件操作命令"></a>2.2 文件操作命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>touch</code></td>
+<td>创建空文件或更新文件的时间戳</td>
+<td><code>touch 文件名</code></td>
+<td><code>touch README.md</code> → 创建空的README文件</td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>查看文件内容（适合小文件）</td>
+<td><code>cat [选项] 文件名</code></td>
+<td>1. <code>cat README.md</code> → 输出文件全部内容<br>2. <code>cat file1.txt file2.txt &gt; file3.txt</code> → 合并两个文件到file3</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>复制文件或目录</td>
+<td><code>cp [选项] 源路径 目标路径</code></td>
+<td>1. <code>cp README.md docs/</code> → 复制文件到docs目录<br>2. <code>cp -r dir1 dir2</code> → 递归复制整个目录</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>移动&#x2F;重命名文件或目录</td>
+<td><code>mv [选项] 源路径 目标路径</code></td>
+<td>1. <code>mv old.txt new.txt</code> → 重命名文件<br>2. <code>mv new.txt docs/</code> → 移动文件到docs目录</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>删除文件或目录（<strong>谨慎使用</strong>）</td>
+<td><code>rm [选项] 路径</code></td>
+<td>1. <code>rm test.txt</code> → 删除单个文件<br>2. <code>rm -r dir1</code> → 递归删除目录及内容<br>3. <code>rm -rf dir1</code> → 强制删除（忽略提示，慎用）</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>查看文件尾部内容（常用于日志）</td>
+<td><code>tail [选项] 文件名</code></td>
+<td>1. <code>tail -n 10 README.md</code> → 查看最后10行<br>2. <code>tail -f app.log</code> → 实时监控文件变化（按<code>Ctrl+C</code>退出）</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-权限管理命令"><a href="#2-3-权限管理命令" class="headerlink" title="2.3 权限管理命令"></a>2.3 权限管理命令</h3><p>Git仓库的文件权限会影响提交和拉取，核心命令如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>chmod</code></td>
+<td>修改文件&#x2F;目录的权限</td>
+<td><code>chmod [权限值/符号] 路径</code></td>
+<td>1. <code>chmod 755 script.sh</code> → 所有者读写执行，其他用户读执行<br>2. <code>chmod +x script.sh</code> → 给所有用户添加执行权限</td>
+</tr>
+<tr>
+<td><code>chown</code></td>
+<td>修改文件&#x2F;目录的所有者和所属组</td>
+<td><code>chown [选项] 所有者:所属组 路径</code></td>
+<td><code>chown user:user-group my-file.txt</code> → 修改文件所有者为user，组为user-group</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-查找与搜索命令"><a href="#2-4-查找与搜索命令" class="headerlink" title="2.4 查找与搜索命令"></a>2.4 查找与搜索命令</h3><p>在Git仓库中搜索内容&#x2F;文件时高频使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>find</code></td>
+<td>按路径&#x2F;名称&#x2F;类型查找文件</td>
+<td><code>find [搜索路径] [条件]</code></td>
+<td>1. <code>find . -name &quot;*.md&quot;</code> → 在当前目录下查找所有md文件<br>2. <code>find /home -type d -name &quot;git*&quot;</code> → 查找所有以git开头的目录</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>在文件中搜索指定字符串</td>
+<td><code>grep [选项] 关键词 文件名</code></td>
+<td>1. <code>grep &quot;git&quot; README.md</code> → 在文件中搜索git关键词<br>2. <code>grep -r &quot;hello&quot; ./</code> → 递归搜索当前目录下所有文件中的hello</td>
+</tr>
+<tr>
+<td><code>diff</code></td>
+<td>对比两个文件的内容差异</td>
+<td><code>diff [选项] 文件1 文件2</code></td>
+<td><code>diff old.txt new.txt</code> → 显示两个文件的差异（和<code>git diff</code>原理类似）</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-压缩与解压命令"><a href="#2-5-压缩与解压命令" class="headerlink" title="2.5 压缩与解压命令"></a>2.5 压缩与解压命令</h3><p>Git备份&#x2F;下载资源时常用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar</code></td>
+<td>打包&#x2F;解压文件（最常用）</td>
+<td><code>tar [选项] 压缩包名 源文件/目录</code></td>
+<td>1. <code>tar -zcvf my-git.tar.gz ./</code> → 打包并压缩当前目录<br>2. <code>tar -zxvf my-git.tar.gz</code> → 解压压缩包到当前目录</td>
+</tr>
+</tbody></table>
+<h3 id="2-6-Git协作相关命令"><a href="#2-6-Git协作相关命令" class="headerlink" title="2.6 Git协作相关命令"></a>2.6 Git协作相关命令</h3><p>用于和远程Git仓库（GitHub&#x2F;Gitee）交互：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ssh</code></td>
+<td>连接远程服务器（克隆私有仓库时用）</td>
+<td><code>ssh [用户名]@[服务器地址]</code></td>
+<td><code>ssh git@github.com</code> → 测试与GitHub的SSH连接</td>
+</tr>
+<tr>
+<td><code>scp</code></td>
+<td>跨机器传输文件</td>
+<td><code>scp [选项] 源文件 目标地址</code></td>
+<td><code>scp local-file.txt user@server:/home/user/</code> → 本地文件传到远程服务器</td>
+</tr>
+</tbody></table>
+<h3 id="2-7-其他常用命令"><a href="#2-7-其他常用命令" class="headerlink" title="2.7 其他常用命令"></a>2.7 其他常用命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>基本语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>echo</code></td>
+<td>输出内容到终端或文件</td>
+<td><code>echo [内容]</code></td>
+<td>1. <code>echo &quot;Hello Git&quot;</code> → 终端输出字符串<br>2. <code>echo &quot;test&quot; &gt; test.txt</code> → 写入内容到文件（覆盖原有内容）</td>
+</tr>
+<tr>
+<td><code>man</code></td>
+<td>查看命令的官方手册（新手必备）</td>
+<td><code>man 命令名</code></td>
+<td><code>man git</code> → 查看git的详细帮助文档<br><code>man ls</code> → 查看ls命令的所有选项</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>清空终端屏幕</td>
+<td><code>clear</code></td>
+<td><code>clear</code> → 一键清空当前终端内容</td>
+</tr>
+</tbody></table>
+<h2 id="3-Git-核心理论"><a href="#3-Git-核心理论" class="headerlink" title="3. Git 核心理论"></a>3. Git 核心理论</h2><h3 id="3-1-Git-四个工作区域"><a href="#3-1-Git-四个工作区域" class="headerlink" title="3.1 Git 四个工作区域"></a>3.1 Git 四个工作区域</h3><ul>
+<li>工作区（Working Directory）：即本地电脑中可见的文件目录，是日常编写代码、修改文件的区域。工作区的文件状态分为“未跟踪”和“已跟踪”，未跟踪文件是指从未被Git管理过的文件。</li>
+<li>暂存区（Stage&#x2F;Index）：位于.git目录下的index文件中，用于临时存储工作区中已修改并准备提交的文件。暂存区相当于“缓冲区”，可将多个修改分批暂存，再一次性提交到本地仓库，便于灵活管理提交内容。</li>
+<li>本地仓库（Local Repository）：即.git隐藏目录，包含了所有版本的提交记录、分支信息等核心数据，是Git版本控制的核心。提交到本地仓库的文件会形成历史版本，可随时回退到任意版本。</li>
+<li>远程仓库（Remote Repository）：位于服务器上的仓库（如GitHub、Gitee），用于多人协作共享代码。本地仓库可与远程仓库同步，实现代码推送（push）和拉取（pull），完成协作开发。</li>
+</ul>
+<blockquote>
+<p>流转关系：工作区修改 → git add 到暂存区 → git commit 到本地仓库 → git push 到远程仓库；反之，远程仓库代码可通过 git pull 拉取到本地仓库，再同步到工作区。</p>
+</blockquote>
+<h3 id="3-2-Git-文件的四种状态"><a href="#3-2-Git-文件的四种状态" class="headerlink" title="3.2 Git 文件的四种状态"></a>3.2 Git 文件的四种状态</h3><ul>
+<li><p>未跟踪（Untracked）：文件在工作区，但从未执行过git add命令，Git不管理该文件。执行git add后，状态变为“已暂存”。</p>
+</li>
+<li><p>已暂存（Staged）：文件已存入暂存区，等待提交到本地仓库。执行git commit后，状态变为“已提交”；若修改已暂存的文件，会同时存在“已暂存”和“已修改”状态，需重新执行git add更新暂存区。</p>
+</li>
+<li><p>已提交（Committed）：文件已提交到本地仓库，形成历史版本。此时文件在本地仓库中是稳定的，可通过git reset回退版本，或通过git push推送到远程仓库。</p>
+</li>
+<li><p>已修改（Modified）：文件在工作区被修改过，但尚未暂存。执行git add可将其转为“已暂存”状态；执行git checkout – 文件名可丢弃修改，回到“已提交”或“已暂存”状态。</p>
+</li>
+</ul>
+<blockquote>
+<p>可通过git status命令随时查看文件当前状态，明确下一步操作方向。</p>
+</blockquote>
+<h2 id="4-Git-基础操作命令"><a href="#4-Git-基础操作命令" class="headerlink" title="4. Git 基础操作命令"></a>4. Git 基础操作命令</h2><h3 id="4-1-仓库初始化与克隆"><a href="#4-1-仓库初始化与克隆" class="headerlink" title="4.1 仓库初始化与克隆"></a>4.1 仓库初始化与克隆</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>初始化本地Git仓库</td>
+<td><code>git init</code> → 在当前目录创建.git隐藏目录</td>
+</tr>
+<tr>
+<td><code>git clone [url]</code></td>
+<td>克隆远程仓库到本地</td>
+<td><code>git clone https://github.com/username/repo.git</code> → 克隆远程仓库</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-文件状态与修改查看"><a href="#4-2-文件状态与修改查看" class="headerlink" title="4.2 文件状态与修改查看"></a>4.2 文件状态与修改查看</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git status [文件]</code></td>
+<td>查看文件&#x2F;所有文件的状态</td>
+<td>1. <code>git status test.txt</code> → 查看指定文件状态<br>2. <code>git status</code> → 查看所有文件状态</td>
+</tr>
+<tr>
+<td><code>git diff [文件]</code></td>
+<td>查看文件的具体修改内容</td>
+<td><code>git diff test.txt</code> → 查看test.txt的修改内容</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-暂存与提交"><a href="#4-3-暂存与提交" class="headerlink" title="4.3 暂存与提交"></a>4.3 暂存与提交</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git add [文件]</code></td>
+<td>添加指定文件到暂存区</td>
+<td><code>git add test.txt</code> → 添加单个文件</td>
+</tr>
+<tr>
+<td><code>git add .</code></td>
+<td>添加所有修改的文件到暂存区</td>
+<td><code>git add .</code> → 批量添加所有文件</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;提交信息&quot;</code></td>
+<td>提交暂存区内容到本地仓库</td>
+<td><code>git commit -m &quot;新增test.txt文件&quot;</code> → 提交并添加描述</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-版本日志与回退"><a href="#4-4-版本日志与回退" class="headerlink" title="4.4 版本日志与回退"></a>4.4 版本日志与回退</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git log</code></td>
+<td>显示从近到远的提交日志（完整信息）</td>
+<td><code>git log</code> → 查看所有提交记录</td>
+</tr>
+<tr>
+<td><code>git log --pretty=oneline</code></td>
+<td>精简显示提交日志（仅版本号+描述）</td>
+<td><code>git log --pretty=oneline</code> → 简化日志输出</td>
+</tr>
+<tr>
+<td><code>git reflog</code></td>
+<td>显示所有操作的命令日志（含回退记录）</td>
+<td><code>git reflog</code> → 查看所有Git操作记录</td>
+</tr>
+<tr>
+<td><code>git reset --hard HEAD^</code></td>
+<td>回退到上一个版本（已提交状态）</td>
+<td><code>git reset --hard HEAD^</code> → 彻底回退到上个版本</td>
+</tr>
+<tr>
+<td><code>git reset --soft HEAD^</code></td>
+<td>回退到上一个版本（未提交状态）</td>
+<td><code>git reset --soft HEAD^</code> → 保留修改，回到未提交状态</td>
+</tr>
+<tr>
+<td><code>git reset --mixed HEAD^</code></td>
+<td>回退到上一个版本（已暂存未提交）</td>
+<td><code>git reset --mixed HEAD^</code> → 回到暂存后未提交状态</td>
+</tr>
+<tr>
+<td><code>git reset --hard [版本号]</code></td>
+<td>回退到指定版本</td>
+<td><code>git reset --hard 1094a</code> → 回退到版本号为1094a的版本</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>备注：<code>HEAD</code>表示当前版本，<code>HEAD^</code>&#x3D;上一版本，<code>HEAD~100</code>&#x3D;往上100个版本</p>
+</blockquote>
+<h3 id="4-5-撤销修改与删除文件"><a href="#4-5-撤销修改与删除文件" class="headerlink" title="4.5 撤销修改与删除文件"></a>4.5 撤销修改与删除文件</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git checkout -- [文件]</code></td>
+<td>丢弃工作区的修改</td>
+<td>1. 文件仅在工作区修改，未暂存 → 回到版本库状态<br>2. 文件已暂存后又修改 → 回到暂存后的状态</td>
+</tr>
+<tr>
+<td><code>git reset HEAD [文件]</code></td>
+<td>撤销暂存区的修改（放回工作区）</td>
+<td>文件已添加到暂存区，想撤销暂存</td>
+</tr>
+<tr>
+<td><code>git rm [文件]</code></td>
+<td>删除版本库中的文件</td>
+<td><code>git rm test.txt &amp;&amp; git commit -m &quot;remove test.txt&quot;</code> → 删除文件并提交</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>撤销修改场景总结：</p>
+<ul>
+<li>场景1：仅改乱工作区 → <code>git checkout -- 文件</code></li>
+<li>场景2：改乱工作区+已暂存 → 先<code>git reset HEAD 文件</code>，再执行场景1</li>
+<li>场景3：已提交错误版本 → 用<code>git reset --hard</code>回退（未推送到远程时可用）</li>
+</ul>
+</blockquote>
+<h3 id="4-6-远程仓库交互"><a href="#4-6-远程仓库交互" class="headerlink" title="4.6 远程仓库交互"></a>4.6 远程仓库交互</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git remote add origin [远程地址]</code></td>
+<td>关联远程仓库（origin为默认名称）</td>
+<td><code>git remote add origin git@github.com:username/repo.git</code></td>
+</tr>
+<tr>
+<td><code>git push -u origin main</code></td>
+<td>第一次推送main分支到远程（-u绑定关联）</td>
+<td><code>git push -u origin main</code> → 推送本地main分支到远程</td>
+</tr>
+<tr>
+<td><code>git push origin main</code></td>
+<td>后续推送本地修改到远程main分支</td>
+<td><code>git push origin main</code> → 日常推送更新</td>
+</tr>
+<tr>
+<td><code>git remote -v</code></td>
+<td>查看已关联的远程仓库信息</td>
+<td><code>git remote -v</code> → 显示远程仓库的fetch&#x2F;push地址</td>
+</tr>
+<tr>
+<td><code>git remote rm origin</code></td>
+<td>删除已关联的远程仓库</td>
+<td><code>git remote rm origin</code> → 解除和远程仓库的关联</td>
+</tr>
+</tbody></table>
+<h2 id="5-Git-分支操作"><a href="#5-Git-分支操作" class="headerlink" title="5. Git 分支操作"></a>5. Git 分支操作</h2><h3 id="5-1-分支基础命令"><a href="#5-1-分支基础命令" class="headerlink" title="5.1 分支基础命令"></a>5.1 分支基础命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch</code></td>
+<td>查看所有本地分支（*标记当前分支）</td>
+<td><code>git branch</code> → 列出所有分支</td>
+</tr>
+<tr>
+<td><code>git branch [分支名]</code></td>
+<td>创建新分支</td>
+<td><code>git branch test</code> → 创建test分支</td>
+</tr>
+<tr>
+<td><code>git checkout [分支名]</code></td>
+<td>切换分支（旧语法）</td>
+<td><code>git checkout test</code> → 切换到test分支</td>
+</tr>
+<tr>
+<td><code>git switch [分支名]</code></td>
+<td>切换分支（新语法，推荐）</td>
+<td><code>git switch test</code> → 切换到test分支</td>
+</tr>
+<tr>
+<td><code>git checkout -b [分支名]</code></td>
+<td>创建+切换分支（旧语法）</td>
+<td><code>git checkout -b test</code> → 创建并切换到test分支</td>
+</tr>
+<tr>
+<td><code>git switch -c [分支名]</code></td>
+<td>创建+切换分支（新语法，推荐）</td>
+<td><code>git switch -c test</code> → 创建并切换到test分支</td>
+</tr>
+<tr>
+<td><code>git merge [分支名]</code></td>
+<td>合并指定分支到当前分支</td>
+<td><code>git merge test</code> → 把test分支合并到当前分支</td>
+</tr>
+<tr>
+<td><code>git branch -d [分支名]</code></td>
+<td>删除本地分支（需先切换到其他分支）</td>
+<td><code>git branch -d test</code> → 删除test分支</td>
+</tr>
+<tr>
+<td><code>git log --graph</code></td>
+<td>查看分支合并的图形化日志</td>
+<td><code>git log --graph</code> → 可视化分支合并历史</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-分支冲突处理"><a href="#5-2-分支冲突处理" class="headerlink" title="5.2 分支冲突处理"></a>5.2 分支冲突处理</h3><p>当不同分支修改同一文件导致合并冲突时：</p>
+<ol>
+<li>Git会标记冲突文件的冲突位置</li>
+<li>手动编辑文件，删除冲突标记并调整代码逻辑</li>
+<li>保存后执行<code>git add [冲突文件]</code> → <code>git commit -m &quot;解决分支冲突&quot;</code> 完成合并</li>
+</ol>
+<h2 id="6-参考资料"><a href="#6-参考资料" class="headerlink" title="6. 参考资料"></a>6. 参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://liaoxuefeng.com/books/git/conclusion/git-cheat-sheet.pdf">Git 速查表（Cheat Sheet）</a></li>
+<li><a target="_blank" rel="noopener" href="https://liaoxuefeng.com/books/git/introduction/index.html">廖雪峰 Git 教程（零基础入门）</a></li>
+</ol>
+<hr>
+</div><div class="article-licensing box"><div class="licensing-title"><p>git新手入门参考</p><p><a href="http://example.com/2026/01/23/git新手入门参考/">http://example.com/2026/01/23/git新手入门参考/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>jasper0507</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-01-23</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-01-23</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Git/">Git</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/01/23/Markdown%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E8%AF%AD%E6%B3%95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Markdown快速上手语法</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/01/23/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%A9%E7%94%A8Github%E3%80%81Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E8%B6%85%E8%AF%A6%E7%BB%86%E7%89%88/"><span class="level-item">零基础利用Github、Hexo搭建个人博客(超详细版)</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="SOHUCS" sid="2026/01/23/git新手入门参考/"></div><script charset="utf-8" src="https://changyan.sohu.com/upload/changyan.js"></script><script>window.changyan.api.config({appid: 'cyykBqHOU',conf: 'prod_dd381aee15200b0623a13b743fafb099'});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.webp" alt="jasper0507"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">jasper0507</p><p class="is-size-6 is-block">Software Engineering student at SYSU</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Earth, Solar System</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives/"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories/"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags/"><p class="title">10</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/jasper0507" target="_blank" rel="me noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/jasper0507"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="QQ" href="https://s41.ax1x.com/2026/01/23/pZgZmH1.jpg"><i class="fab fa-qq"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="WeChat" href="https://s41.ax1x.com/2026/01/23/pZgZuAx.jpg"><i class="fab fa-weixin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Bilibili" href="https://space.bilibili.com/501118683?spm_id_from=333.1007.0.0"><i class="fab fa-bilibili"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Git-零基础学习笔记"><span class="level-left"><span class="level-item">1</span><span class="level-item">Git 零基础学习笔记</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#目录"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">目录</span></span></a></li><li><a class="level is-mobile" href="#1-Git-安装与配置"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">1. Git 安装与配置</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#安装配置参考文档"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">安装配置参考文档</span></span></a></li></ul></li><li><a class="level is-mobile" href="#2-前置知识：Git常用Linux命令"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">2. 前置知识：Git常用Linux命令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-目录操作命令"><span class="level-left"><span class="level-item">1.3.1</span><span class="level-item">2.1 目录操作命令</span></span></a></li><li><a class="level is-mobile" href="#2-2-文件操作命令"><span class="level-left"><span class="level-item">1.3.2</span><span class="level-item">2.2 文件操作命令</span></span></a></li><li><a class="level is-mobile" href="#2-3-权限管理命令"><span class="level-left"><span class="level-item">1.3.3</span><span class="level-item">2.3 权限管理命令</span></span></a></li><li><a class="level is-mobile" href="#2-4-查找与搜索命令"><span class="level-left"><span class="level-item">1.3.4</span><span class="level-item">2.4 查找与搜索命令</span></span></a></li><li><a class="level is-mobile" href="#2-5-压缩与解压命令"><span class="level-left"><span class="level-item">1.3.5</span><span class="level-item">2.5 压缩与解压命令</span></span></a></li><li><a class="level is-mobile" href="#2-6-Git协作相关命令"><span class="level-left"><span class="level-item">1.3.6</span><span class="level-item">2.6 Git协作相关命令</span></span></a></li><li><a class="level is-mobile" href="#2-7-其他常用命令"><span class="level-left"><span class="level-item">1.3.7</span><span class="level-item">2.7 其他常用命令</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-Git-核心理论"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">3. Git 核心理论</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-Git-四个工作区域"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">3.1 Git 四个工作区域</span></span></a></li><li><a class="level is-mobile" href="#3-2-Git-文件的四种状态"><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">3.2 Git 文件的四种状态</span></span></a></li></ul></li><li><a class="level is-mobile" href="#4-Git-基础操作命令"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">4. Git 基础操作命令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#4-1-仓库初始化与克隆"><span class="level-left"><span class="level-item">1.5.1</span><span class="level-item">4.1 仓库初始化与克隆</span></span></a></li><li><a class="level is-mobile" href="#4-2-文件状态与修改查看"><span class="level-left"><span class="level-item">1.5.2</span><span class="level-item">4.2 文件状态与修改查看</span></span></a></li><li><a class="level is-mobile" href="#4-3-暂存与提交"><span class="level-left"><span class="level-item">1.5.3</span><span class="level-item">4.3 暂存与提交</span></span></a></li><li><a class="level is-mobile" href="#4-4-版本日志与回退"><span class="level-left"><span class="level-item">1.5.4</span><span class="level-item">4.4 版本日志与回退</span></span></a></li><li><a class="level is-mobile" href="#4-5-撤销修改与删除文件"><span class="level-left"><span class="level-item">1.5.5</span><span class="level-item">4.5 撤销修改与删除文件</span></span></a></li><li><a class="level is-mobile" href="#4-6-远程仓库交互"><span class="level-left"><span class="level-item">1.5.6</span><span class="level-item">4.6 远程仓库交互</span></span></a></li></ul></li><li><a class="level is-mobile" href="#5-Git-分支操作"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">5. Git 分支操作</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#5-1-分支基础命令"><span class="level-left"><span class="level-item">1.6.1</span><span class="level-item">5.1 分支基础命令</span></span></a></li><li><a class="level is-mobile" href="#5-2-分支冲突处理"><span class="level-left"><span class="level-item">1.6.2</span><span class="level-item">5.2 分支冲突处理</span></span></a></li></ul></li><li><a class="level is-mobile" href="#6-参考资料"><span class="level-left"><span class="level-item">1.7</span><span class="level-item">6. 参考资料</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://blog.csdn.net/2402_82377921?spm=1000.2115.3001.5343" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">CSDN</span></span><span class="level-right"><span class="level-item tag">blog.csdn.net</span></span></a></li><li><a class="level is-mobile" href="https://gitee.com/jasper0507" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Gitee</span></span><span class="level-right"><span class="level-item tag">gitee.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Markdown/"><span class="level-start"><span class="level-item">Markdown</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E5%AD%A6/"><span class="level-start"><span class="level-item">博客搭建教学</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">数据结构与算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-01-23T10:00:46.000Z">2026-01-23</time></p><p class="title"><a href="/2026/01/23/Markdown%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E8%AF%AD%E6%B3%95/">Markdown快速上手语法</a></p><p class="categories"><a href="/categories/Markdown/">Markdown</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-01-23T09:57:17.000Z">2026-01-23</time></p><p class="title"><a href="/2026/01/23/git%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83/">git新手入门参考</a></p><p class="categories"><a href="/categories/Git/">Git</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-01-23T07:45:34.000Z">2026-01-23</time></p><p class="title"><a href="/2026/01/23/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%A9%E7%94%A8Github%E3%80%81Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E8%B6%85%E8%AF%A6%E7%BB%86%E7%89%88/">零基础利用Github、Hexo搭建个人博客(超详细版)</a></p><p class="categories"><a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E5%AD%A6/">博客搭建教学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-01-23T07:45:34.000Z">2026-01-23</time></p><p class="title"><a href="/2026/01/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/">数据结构与算法(长期更新)</a></p><p class="categories"><a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-01-22T14:00:00.000Z">2026-01-22</time></p><p class="title"><a href="/2026/01/22/%E5%A6%82%E4%BD%95%E6%96%B0%E5%A2%9E%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9%EF%BC%9F/">如何新增博客内容？</a></p><p class="categories"><a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E5%AD%A6/">博客搭建教学</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/01/"><span class="level-start"><span class="level-item">January 2026</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tag">教程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="tag">数据结构与算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"><span class="tag">期末复习</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"><span class="tag">博客搭建</span><span class="tag">2</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"></p><p class="is-size-7">© 2026 jasper0507 用💖发电</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/jasper0507/jasper0507.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
